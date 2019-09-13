@@ -7,7 +7,8 @@ import Smurf from './Smurf';
 
 
 
-const Smurfs = ({ getSmurfs, isFetching, ...props }) => {
+const Smurfs = ({ getSmurfs, isFetching, smurfs }) => {
+  
   useEffect(() => {
     
     getSmurfs();
@@ -23,35 +24,35 @@ const Smurfs = ({ getSmurfs, isFetching, ...props }) => {
       <button onClick={getSmurfs}>Find More Smurfs</button>
       <h2>Smurfs:</h2>
       <div>
-        {props.smurfs.map(item => (
+        {smurfs.map(item => (
           <div>
             <Smurf name = {item.name}
                    age = {item.age} 
                    height = {item.height} 
-                   id = {item.id}  
-                   key = {item.id} /> 
-            {/* <AnswerForm answer = {item.correct_answer} key = {item.correct_answer}/> */}
-          </div>
+                   id = {item.id} 
+                   key = {item.id}
+                    /> 
+           
+           </div>
         ))}
-      </div>      
+      </div>       
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
+ 
     smurfs: state.smurfs,
     isFetching: state.isFetching,
     error: state.error,
-    name: state.smurfs.name,
-    age: state.smurfs.age,
-    height: state.smurfs.height,
-    id: state.smurfs.id
+
     
-  };
-};
+  
+});
+
+
 
 export default connect(
   mapStateToProps,
-  { getSmurfs}
+  { getSmurfs }
   )(Smurfs);
