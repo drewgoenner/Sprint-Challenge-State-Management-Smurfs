@@ -33,7 +33,7 @@ width: 40%;
 
 }
 
-// export default Smurf;
+
 
 const mapDispatchToProps = dispatch => {
     return {
