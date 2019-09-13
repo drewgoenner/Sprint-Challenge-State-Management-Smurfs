@@ -3,6 +3,7 @@ import {
     FETCHING_SMURF_SUCCESS,
     FETCHING_SMURF_FAILURE,
     ADD_SMURF,
+    DELETE_SMURF
   
   } from "../actions";
   
@@ -49,6 +50,9 @@ import {
                 {name: action.payload.name,
                 age: action.payload.age,
                 height: action.payload.height}]};
+
+      case DELETE_SMURF:
+        return state.filter(smurf => smurf.id !== action.payload.id);
                 
       
       default:

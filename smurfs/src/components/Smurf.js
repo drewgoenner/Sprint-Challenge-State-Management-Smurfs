@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
 import styled from 'styled-components';
+import {deleteSmurf} from '../actions';
+import { connect } from 'react-redux';
 
 
 const CardDiv = styled.div`
@@ -8,7 +10,7 @@ width: 40%;
 
 `;
 
- const Smurf = props => {
+ const Smurf = (props, {onDelete}) => {
      console.log (props)
 
     return (
@@ -22,7 +24,7 @@ width: 40%;
                 meta = {`Age: ${props.age}`}
                 extra = {`ID: ${props.id}`}
                   />    
-                 {/* <button className="btn btn-danger" type="button" onClick={() => onDelete(props.id)}></button> */}
+                 <button className="btn btn-danger" type="button" onClick={() => deleteSmurf(props.id)}>Delete</button>
             </Card.Group>
         </CardDiv>
         
@@ -31,20 +33,20 @@ width: 40%;
 
 }
 
-export default Smurf;
+// export default Smurf;
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//       onDelete: id => {
-//         dispatch(deleteSmurf(id));
-//       }
-//     };
-//   };
+const mapDispatchToProps = dispatch => {
+    return {
+      onDelete: id => {
+        dispatch(deleteSmurf(id));
+      }
+    };
+  };
 
-//   export default connect(
-//     mapDispatchToProps,
-//     { deleteSmurf }
-//     )(Smurf);
+  export default connect(
+    mapDispatchToProps,
+    { deleteSmurf }
+    )(Smurf);
 
 
 

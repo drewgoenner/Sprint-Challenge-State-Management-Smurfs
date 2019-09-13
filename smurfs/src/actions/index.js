@@ -22,6 +22,7 @@ export const getSmurfs = () => dispatch => {
 
 // Posting Actions
 export const ADD_SMURF = 'ADD_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const createSmurf = ({ name, age, height, id }) => {
     return (dispatch) => {
@@ -46,6 +47,13 @@ export const createSmurf = ({ name, age, height, id }) => {
       }
     }
   };
+
+  export const deleteSmurf = id => ({
+    type: DELETE_SMURF,
+    payload: {
+      id
+    }
+  });
 
 
 
